@@ -1,0 +1,269 @@
+/* --- 1. Global & Variables --- */
+:root {
+    /* Rich, Professional Dark Colors */
+    --bg-dark: #0A0F1A;
+    --text-light: #E0E0E0;   /* Defined light text color for visibility */
+    --surface-dark: #121A2C; 
+    --neon-blue: #00D4FF;   /* Info/Primary */
+    --neon-green: #39FF14;  /* Hover/Success */
+    --neon-red: #FF3131;    /* Danger/Warning */
+    --circuit-color: #004455; /* Subtle Grid Color */
+    
+    --font-primary: 'Inter', sans-serif;
+}
+
+body {
+    background-color: var(--bg-dark);
+    color: var(--text-light); 
+    font-family: var(--font-primary);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
+    
+    /* CRUCIAL FOR FIXED HEADER */
+    padding-top: 65px; 
+}
+
+/* Base Link Styling */
+a {
+    color: var(--neon-blue);
+    text-decoration: none;
+    transition: color 0.3s;
+}
+a:hover {
+    color: var(--neon-green);
+}
+
+/* Custom Text Classes for Neon Color Control */
+/* Ensure generic text classes are visible */
+.text-light, .text-white-50 {
+    color: var(--text-light) !important;
+}
+
+.custom-neon-blue-text {
+    color: var(--neon-blue) !important;
+    text-shadow: 0 0 8px rgba(0, 212, 255, 0.5);
+}
+.custom-neon-blue-text-link {
+    color: var(--neon-blue);
+}
+.custom-neon-blue-text-link:hover {
+    color: var(--neon-green) !important;
+    text-shadow: 0 0 8px rgba(57, 255, 20, 0.8);
+}
+.text-success-neon {
+    color: var(--neon-green) !important;
+    text-shadow: 0 0 5px rgba(57, 255, 20, 0.5);
+}
+.text-info-neon {
+    color: var(--neon-blue) !important;
+    text-shadow: 0 0 5px rgba(0, 212, 255, 0.5);
+}
+
+/* --- 2. Background Grid (Applied to body via .bg-dark) --- */
+
+.bg-dark {
+    background-image: 
+        /* Vertical Lines */
+        repeating-linear-gradient(0deg, var(--circuit-color) 0, transparent 1px, transparent 40px),
+        /* Horizontal Lines */
+        repeating-linear-gradient(90deg, var(--circuit-color) 0, transparent 1px, transparent 40px);
+    background-size: 40px 40px;
+    background-attachment: fixed;
+    background-color: var(--bg-dark) !important;
+}
+
+/* --- 3. Fixed Header and Navigation --- */
+.custom-navbar {
+    /* Slightly transparent background (0.85) */
+    background-color: rgba(0, 0, 0, 0.85) !important; 
+    border-bottom: 2px solid var(--neon-blue);
+    box-shadow: 0 0 20px rgba(0, 212, 255, 0.6);
+    z-index: 1030;
+}
+
+.custom-navbar .logo-text {
+    letter-spacing: 3px;
+    font-size: 1.8rem;
+    text-transform: uppercase;
+    color: var(--neon-blue);
+    text-shadow: 0 0 5px var(--neon-blue);
+}
+
+/* Back Button Styling */
+.back-btn {
+    border-radius: 25px;
+    font-size: 0.9rem;
+    padding: 8px 20px;
+    font-weight: bold;
+    color: var(--neon-blue) !important;
+    border-color: var(--neon-blue) !important;
+    background: transparent;
+    transition: all 0.3s;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.back-btn:hover {
+    background-color: var(--neon-blue) !important;
+    color: var(--bg-dark) !important;
+    box-shadow: 0 0 15px var(--neon-green), inset 0 0 10px var(--neon-green);
+    border-color: var(--neon-green) !important;
+    transform: translateY(-2px);
+}
+
+.back-btn svg {
+    fill: currentColor;
+}
+
+/* --- 4. Community Specific Styles --- */
+
+#community-heading {
+    letter-spacing: 5px;
+    color: white; 
+    text-shadow: 0 0 15px var(--neon-green), 0 0 8px var(--neon-blue);
+}
+
+/* Post Submission Form */
+.submission-panel {
+    background-color: var(--surface-dark);
+    border: 1px solid var(--neon-blue);
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 212, 255, 0.4);
+    height: fit-content;
+}
+
+.submission-panel h3 {
+    color: var(--neon-blue);
+    text-shadow: 0 0 5px var(--neon-blue);
+}
+
+.form-label {
+    color: var(--text-light); /* Ensure form labels are visible */
+}
+
+.form-control {
+    background-color: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(0, 212, 255, 0.3);
+    color: var(--text-light); /* Make input text visible */
+    transition: all 0.3s;
+}
+
+.form-control::placeholder {
+    color: rgba(255, 255, 255, 0.5); /* Make placeholder text lighter */
+}
+
+.form-control:focus {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-color: var(--neon-green);
+    box-shadow: 0 0 8px rgba(57, 255, 20, 0.6);
+    color: white;
+}
+
+.btn-submit {
+    background-color: var(--neon-green);
+    color: var(--bg-dark);
+    border: none;
+    transition: all 0.3s;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.btn-submit:hover {
+    background-color: var(--neon-green);
+    color: var(--bg-dark);
+    box-shadow: 0 0 20px var(--neon-green);
+    transform: scale(1.02);
+}
+
+/* Community Feed Posts */
+.post-item {
+    background-color: var(--surface-dark);
+    border-left: 5px solid;
+    border-radius: 8px;
+    transition: transform 0.3s, box-shadow 0.3s;
+    color: var(--text-light);
+}
+
+.post-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.6);
+}
+
+.post-tag {
+    font-size: 0.75rem;
+    padding: 0.4rem 0.6rem;
+    border-radius: 3px;
+    opacity: 0.9;
+}
+
+.post-danger { border-left-color: var(--neon-red); }
+.post-tip { border-left-color: var(--neon-green); }
+.post-question { border-left-color: var(--neon-blue); }
+
+.post-danger:hover { box-shadow: 0 0 10px rgba(255, 49, 49, 0.5); }
+.post-tip:hover { box-shadow: 0 0 10px rgba(57, 255, 20, 0.5); }
+.post-question:hover { box-shadow: 0 0 10px rgba(0, 212, 255, 0.5); }
+
+/* --- 5. Modal Styles (Confirmation Panel) --- */
+
+.custom-modal-content {
+    background-color: var(--surface-dark);
+    border: 2px solid var(--neon-blue);
+    border-radius: 10px;
+    box-shadow: 0 0 25px rgba(0, 212, 255, 0.7);
+    color: var(--text-light);
+}
+
+.modal-header {
+    border-bottom: 1px solid rgba(0, 212, 255, 0.5);
+}
+
+.modal-title {
+    color: var(--neon-blue);
+    font-weight: bold;
+}
+
+.btn-close-white {
+    filter: invert(1) grayscale(100%) brightness(200%); 
+}
+
+.modal-footer .btn-outline-info {
+    color: var(--neon-blue);
+    border-color: var(--neon-blue);
+}
+.modal-footer .btn-outline-info:hover {
+    background-color: var(--neon-blue);
+    color: var(--bg-dark);
+}
+
+.modal-footer .btn-success {
+    background-color: var(--neon-green);
+    border-color: var(--neon-green);
+    color: var(--bg-dark);
+    font-weight: bold;
+    transition: box-shadow 0.3s;
+}
+
+.modal-footer .btn-success:hover {
+    box-shadow: 0 0 10px var(--neon-green);
+    background-color: var(--neon-green);
+    border-color: var(--neon-green);
+}
+
+/* Alert inside modal */
+.alert-warning {
+    background-color: #333300; 
+    color: #FFD700; 
+    border-color: #FFD700;
+}
+
+/* Footer */
+.bottom-panel {
+    background-color: var(--surface-dark) !important;
+    border-top: 2px solid var(--neon-blue);
+    position: relative;
+    z-index: 10;
+    margin-top: auto;
+}

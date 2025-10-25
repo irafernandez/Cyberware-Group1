@@ -1,0 +1,254 @@
+/* --- 1. Global & Variables --- */
+:root {
+    /* Custom CSS Variables (Copied from your desired style) */
+    --bg-dark: #0A0F1A;
+    --neon-blue: #00D4FF;
+    --neon-green: #39FF14;
+    --circuit-color: #004455;
+    
+    /* Content Box Colors - Mapped to your button variables for consistency */
+    --color-auth: #0056B3; 	 	/* btn-dark-blue */
+    --color-encryption: #28A745;/* btn-green */
+    --color-zt: #D9534F; 	 	/* btn-red */
+    --color-monitor: #17A2B8; 	/* btn-cyan */
+    
+    --font-primary: 'Inter', sans-serif;
+}
+
+
+body {
+    background-color: var(--bg-dark);
+    color: white;
+    font-family: var(--font-primary);
+    overflow-x: hidden; /* Prevent horizontal scroll */
+    height: 100vh;
+    /* This padding is crucial to prevent the fixed header from overlapping content */
+    padding-top: 65px;
+}
+
+a {
+    color: var(--neon-blue);
+    text-decoration: none;
+    transition: color 0.3s;
+}
+a:hover {
+    color: var(--neon-green);
+}
+
+body {
+    background-color: var(--bg-dark);
+    color: white;
+    font-family: var(--font-primary);
+    overflow-x: hidden; /* Prevent horizontal scroll */
+    height: 100vh;
+}
+
+a {
+    color: var(--neon-blue);
+    text-decoration: none;
+    transition: color 0.3s;
+}
+a:hover {
+    color: var(--neon-green);
+}
+
+/* --- 2. Circuit Board Background Effect --- */
+.main-content {
+    /* Circuit Board Grid Effect */
+    background-image: repeating-linear-gradient(0deg, var(--circuit-color) 0, transparent 1px, transparent 40px),
+    	 	 	 	 repeating-linear-gradient(90deg, var(--circuit-color) 0, transparent 1px, transparent 40px);
+    background-size: 40px 40px;
+    background-attachment: fixed; /* Fixes grid to viewport */
+    min-height: calc(100vh - 70px); /* Fill available space */
+    padding-top: 40px !important;
+}
+
+/* --- 3. Header/Navigation Styling --- */
+.custom-navbar { /* Target the class used in HTML */
+    /* ADJUSTED OPACITY: Changed 0.95 to 0.85 (85% opaque, 15% transparent) */
+    background-color: rgba(0, 0, 0, 0.85) !important; 
+    border-bottom: 2px solid var(--neon-blue);
+    box-shadow: 0 0 20px rgba(0, 212, 255, 0.6); 
+    width: 100%;
+    z-index: 1030; 
+}
+
+.logo-text {
+    letter-spacing: 3px;
+    color: var(--neon-blue);
+    text-shadow: 0 0 10px var(--neon-blue);
+}
+
+/* Back Button Styling (Reusing your "btn-cyan" look) */
+.back-btn {
+    border-radius: 25px;
+    font-size: 0.9rem;
+    padding: 8px 20px;
+    font-weight: bold;
+    background-color: var(--color-monitor); /* btn-cyan */
+    border: none;
+    box-shadow: 0 0 10px var(--neon-blue);
+    transition: all 0.3s;
+}
+
+.back-btn:hover {
+    background-color: var(--neon-blue);
+    color: var(--bg-dark) !important;
+    box-shadow: 0 0 15px var(--neon-green); /* Green glow on hover */
+    transform: translateY(-2px);
+}
+
+/* --- 4. Hero Section: Globe Graphic & Heading --- */
+.unhackable-hero {
+    position: relative;
+    padding: 30px 0;
+    margin-bottom: 50px !important;
+}
+
+.hero-graphic-container {
+    height: 350px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    /* This container holds the globe in the center */
+}
+
+.globe-placeholder {
+    width: 280px;
+    height: 280px;
+    border-radius: 50%;
+    /* Create the glowing blue, digital globe effect */
+    box-shadow: 0 0 40px var(--neon-blue), 0 0 15px rgba(0, 212, 255, 0.4) inset;
+    background: radial-gradient(circle at center, rgba(0, 212, 255, 0.2) 0%, rgba(0, 212, 255, 0.05) 50%, rgba(0, 0, 0, 0) 100%);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation: pulse 5s infinite alternate;
+    z-index: 1;
+}
+
+@keyframes pulse {
+    0% { transform: translate(-50%, -50%) scale(1); opacity: 0.9; }
+    100% { transform: translate(-50%, -50%) scale(1.03); opacity: 1; }
+}
+
+.globe-center {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    /* Lines to mimic the digital grid/latitude/longitude */
+    background-image: repeating-linear-gradient(0deg, var(--neon-blue), transparent 1px, transparent 50px),
+    	 	 	 	 repeating-linear-gradient(90deg, var(--neon-blue), transparent 1px, transparent 50px);
+    background-size: 100% 50%;
+    opacity: 0.3;
+}
+
+/* Heading and Loading Bar */
+#unhackable-heading {
+    z-index: 10; 
+    color: white;
+    letter-spacing: 5px;
+    text-shadow: 0 0 12px var(--neon-blue);
+    margin-bottom: 0.5rem;
+}
+
+.loading-bar-placeholder {
+    width: 350px;
+    height: 5px;
+    background-color: var(--neon-blue);
+    box-shadow: 0 0 10px var(--neon-blue);
+    border-radius: 2px;
+    /* Simple animation for the bar */
+    animation: load-bar 3s infinite;
+}
+
+@keyframes load-bar {
+    0% { width: 150px; }
+    50% { width: 400px; background-color: var(--neon-green); box-shadow: 0 0 10px var(--neon-green); }
+    100% { width: 350px; background-color: var(--neon-blue); box-shadow: 0 0 10px var(--neon-blue); }
+}
+
+/* --- 5. Content Pillars (The Glowing Cards) --- */
+.pillar-box {
+    background-color: rgba(33, 37, 41, 0.9); /* Dark card with slight transparency */
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease-in-out;
+}
+
+.pillar-box:hover {
+    transform: translateY(-5px); 
+    border-color: var(--neon-blue);
+}
+
+.pillar-box h3 {
+    font-weight: 700;
+}
+
+.pillar-box h3 svg {
+    color: white; /* Color controlled by the box border for a unified look */
+    filter: drop-shadow(0 0 5px white);
+}
+
+/* Applying Color Coding and Glows based on your variables */
+
+/* Authentication (Dark Blue) */
+.box-auth { border-left: 5px solid var(--color-auth); }
+.box-auth:hover { box-shadow: 0 0 15px rgba(0, 86, 179, 0.8); }
+
+/* Encryption (Green) */
+.box-encryption { border-left: 5px solid var(--color-encryption); }
+.box-encryption:hover { box-shadow: 0 0 15px rgba(40, 167, 69, 0.8); }
+
+/* Zero Trust (Red) */
+.box-zt { border-left: 5px solid var(--color-zt); }
+.box-zt:hover { box-shadow: 0 0 15px rgba(217, 83, 79, 0.8); }
+
+/* Monitoring (Cyan) */
+.box-monitor { border-left: 5px solid var(--color-monitor); }
+.box-monitor:hover { box-shadow: 0 0 15px rgba(23, 162, 184, 0.8); }
+
+
+/* Defense List Styling */
+.defense-list li {
+    padding: 8px 0;
+    border-bottom: 1px solid var(--circuit-color); /* Use the circuit color for subtle dividers */
+}
+.defense-list li:last-child {
+    border-bottom: none;
+}
+.defense-list strong {
+    font-size: 1.2rem;
+    line-height: 1;
+    margin-top: -2px;
+}
+.defense-list p strong {
+    color: white; /* Ensure key terms are visible */
+}
+.text-white-50 { /* Ensures the lead paragraphs are readable */
+    color: rgba(255, 255, 255, 0.7) !important;
+}
+
+/* --- 6. Footer Styling --- */
+footer {
+    background-color: rgba(0, 0, 0, 0.7);
+    border-top: 2px solid var(--circuit-color);
+    position: relative;
+    z-index: 10;
+}
+
+footer p {
+    margin-bottom: 0;
+}
+
+footer a {
+    color: var(--neon-blue) !important;
+    font-weight: bold;
+    text-shadow: 0 0 5px var(--neon-blue);
+}
+
+footer a:hover {
+    color: var(--neon-green) !important;
+    text-shadow: 0 0 5px var(--neon-green);
+}

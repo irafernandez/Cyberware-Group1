@@ -1,0 +1,197 @@
+/* --- 1. Global & Variables --- */
+:root {
+    /* Rich, Professional Dark Colors */
+    --bg-dark: #0A0F1A;
+    --text-light: #E0E0E0;   
+    --surface-dark: #121A2C; 
+    --neon-blue: #00D4FF;   /* Info/Primary */
+    --neon-green: #39FF14;  /* Success */
+    --neon-red: #FF3131;    /* Danger */
+    --circuit-color: #004455; /* Subtle Grid Color */
+    
+    --font-primary: 'Inter', sans-serif;
+}
+
+body {
+    background-color: var(--bg-dark);
+    color: var(--text-light); /* Base body text color */
+    font-family: var(--font-primary);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
+    padding-top: 65px; 
+}
+
+/* Base Link & Text Styling */
+a {
+    color: var(--neon-blue);
+    text-decoration: none;
+    transition: color 0.3s;
+}
+a:hover {
+    color: var(--neon-green);
+}
+.text-light, .text-white-50, .text-muted {
+    color: var(--text-light) !important;
+}
+.custom-neon-blue-text {
+    color: var(--neon-blue) !important;
+    text-shadow: 0 0 8px rgba(0, 212, 255, 0.5);
+}
+.custom-neon-blue-text-link {
+    color: var(--neon-blue);
+}
+.custom-neon-blue-text-link:hover {
+    color: var(--neon-green) !important;
+    text-shadow: 0 0 8px rgba(57, 255, 20, 0.8);
+}
+.text-success-neon {
+    color: var(--neon-green) !important;
+    text-shadow: 0 0 5px rgba(57, 255, 20, 0.5);
+}
+.text-danger-neon {
+    color: var(--neon-red) !important;
+    text-shadow: 0 0 5px rgba(255, 49, 49, 0.5);
+}
+.text-info-neon {
+    color: var(--neon-blue) !important;
+    text-shadow: 0 0 5px rgba(0, 212, 255, 0.5);
+}
+
+/* --- 2. Background Grid --- */
+.bg-dark {
+    background-image: 
+        repeating-linear-gradient(0deg, var(--circuit-color) 0, transparent 1px, transparent 40px),
+        repeating-linear-gradient(90deg, var(--circuit-color) 0, transparent 1px, transparent 40px);
+    background-size: 40px 40px;
+    background-attachment: fixed;
+    background-color: var(--bg-dark) !important;
+}
+
+/* --- 3. Fixed Header and Back Button --- */
+.custom-navbar {
+    background-color: rgba(0, 0, 0, 0.85) !important; 
+    border-bottom: 2px solid var(--neon-blue);
+    box-shadow: 0 0 20px rgba(0, 212, 255, 0.6);
+    z-index: 1030;
+}
+.custom-navbar .logo-text {
+    letter-spacing: 3px;
+    font-size: 1.8rem;
+    text-transform: uppercase;
+    color: var(--neon-blue);
+    text-shadow: 0 0 5px var(--neon-blue);
+}
+/* Back Button Styling */
+.back-btn {
+    border-radius: 25px;
+    font-size: 0.9rem;
+    padding: 8px 20px;
+    font-weight: bold;
+    color: var(--neon-blue) !important;
+    border-color: var(--neon-blue) !important;
+    background: transparent;
+    transition: all 0.3s;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+.back-btn:hover {
+    background-color: var(--neon-blue) !important;
+    color: var(--bg-dark) !important;
+    box-shadow: 0 0 15px var(--neon-green), inset 0 0 10px var(--neon-green);
+    border-color: var(--neon-green) !important;
+    transform: translateY(-2px);
+}
+.back-btn svg {
+    fill: currentColor;
+}
+
+/* --- 4. Mobile App Specific Styles --- */
+
+#app-heading {
+    letter-spacing: 5px;
+    color: white; 
+    text-shadow: 0 0 15px var(--neon-blue), 0 0 8px var(--neon-green);
+}
+
+/* NEW: Styling for SVG App Icons */
+.app-icon-svg {
+    width: 150px; /* Adjust size as needed */
+    height: 50px; /* Adjust size as needed */
+    color: var(--neon-blue); /* Default neon blue color */
+    filter: drop-shadow(0 0 5px rgba(0, 212, 255, 0.5)); /* Subtle neon glow */
+    transition: all 0.3s ease-in-out;
+}
+
+.app-icon-svg:hover {
+    color: var(--neon-green); /* Change color on hover */
+    filter: drop-shadow(0 0 8px rgba(57, 255, 20, 0.8)); /* Stronger glow on hover */
+    transform: translateY(-2px); /* Slight lift on hover */
+}
+
+
+/* Form Panel */
+.waitlist-panel {
+    background-color: var(--surface-dark);
+    border: 1px solid var(--neon-blue);
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 212, 255, 0.4);
+}
+
+/* Success Panel - Highlighted Green for Confirmation */
+.success-panel {
+    background-color: var(--surface-dark);
+    border: 1px solid var(--neon-green); /* Green border */
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(57, 255, 20, 0.6); /* Green shadow */
+}
+
+.form-label {
+    color: var(--text-light);
+}
+
+.form-control, textarea.form-control {
+    background-color: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(0, 212, 255, 0.3);
+    color: white !important; 
+    transition: all 0.3s;
+}
+
+.form-control::placeholder {
+    color: rgba(255, 255, 255, 0.5) !important; 
+}
+
+.form-control:focus {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-color: var(--neon-green);
+    box-shadow: 0 0 8px rgba(57, 255, 20, 0.6);
+    color: white !important;
+}
+
+/* Waitlist Submit Button */
+.btn-waitlist {
+    background-color: var(--neon-blue);
+    color: var(--bg-dark);
+    border: none;
+    transition: all 0.3s;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 1.1rem;
+}
+
+.btn-waitlist:hover {
+    background-color: var(--neon-blue);
+    color: var(--bg-dark);
+    box-shadow: 0 0 20px var(--neon-blue);
+    transform: scale(1.02);
+}
+
+/* Footer */
+.bottom-panel {
+    background-color: var(--surface-dark) !important;
+    border-top: 2px solid var(--neon-blue);
+    position: relative;
+    z-index: 10;
+    margin-top: auto;
+}

@@ -1,71 +1,77 @@
-/* --- 1. Global & Variables --- */
+/* --- UNHACKABLE.CSS --- */
+
+/* 1. Global & Variables (Copied from beware.css for self-containment/consistency) */
 :root {
-    /* Custom CSS Variables (Copied from your desired style) */
+    /* Rich, Professional Dark Colors */
     --bg-dark: #0A0F1A;
-    --neon-blue: #00D4FF;
-    --neon-green: #39FF14;
-    --circuit-color: #004455;
+    --text-light: #E0E0E0; /* Added: Clear light text color */
+    --surface-dark: #121A2C; /* Added: Dark background for elements/cards */
+    --neon-blue: #00D4FF; /* Info/Primary */
+    --neon-green: #39FF14; /* Hover/Success */
+    --neon-red: #FF3131; /* Danger/Warning */
+    --circuit-color: #004455; /* Subtle Grid Color */
     
-    /* Content Box Colors - Mapped to your button variables for consistency */
-    --color-auth: #0056B3; 	 	/* btn-dark-blue */
-    --color-encryption: #28A745;/* btn-green */
-    --color-zt: #D9534F; 	 	/* btn-red */
-    --color-monitor: #17A2B8; 	/* btn-cyan */
+    /* Content Box Colors - Mapped to Bootstrap/Security themes for consistency */
+    --color-danger: var(--neon-red);
+    --color-success: var(--neon-green);
+    --color-info: var(--neon-blue);
     
     --font-primary: 'Inter', sans-serif;
 }
 
-
+/* Base Body Style & Global Classes (From beware.css) */
 body {
     background-color: var(--bg-dark);
-    color: white;
+    color: var(--text-light); /* Base text is light */
     font-family: var(--font-primary);
-    overflow-x: hidden; /* Prevent horizontal scroll */
-    height: 100vh;
-    /* This padding is crucial to prevent the fixed header from overlapping content */
-    padding-top: 65px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
+    padding-top: 65px; 
 }
 
-a {
+/* Custom Text Classes for Neon Color Control (From beware.css) */
+.custom-neon-blue-text-link {
     color: var(--neon-blue);
-    text-decoration: none;
-    transition: color 0.3s;
-}
-a:hover {
-    color: var(--neon-green);
+    text-shadow: 0 0 5px rgba(0, 212, 255, 0.5);
 }
 
-body {
-    background-color: var(--bg-dark);
-    color: white;
-    font-family: var(--font-primary);
-    overflow-x: hidden; /* Prevent horizontal scroll */
-    height: 100vh;
+.custom-neon-blue-text-link:hover {
+    color: var(--neon-green) !important;
+    text-shadow: 0 0 8px rgba(57, 255, 20, 0.8);
 }
 
-a {
-    color: var(--neon-blue);
-    text-decoration: none;
-    transition: color 0.3s;
-}
-a:hover {
-    color: var(--neon-green);
+.text-success-neon {
+    color: var(--color-success) !important;
+    text-shadow: 0 0 5px rgba(57, 255, 20, 0.5);
 }
 
-/* --- 2. Circuit Board Background Effect --- */
-.main-content {
-    /* Circuit Board Grid Effect */
-    background-image: repeating-linear-gradient(0deg, var(--circuit-color) 0, transparent 1px, transparent 40px),
-    	 	 	 	 repeating-linear-gradient(90deg, var(--circuit-color) 0, transparent 1px, transparent 40px);
+.text-info-neon {
+    color: var(--color-info) !important;
+    text-shadow: 0 0 5px rgba(0, 212, 255, 0.5);
+}
+
+/* Background Grid (From beware.css) */
+.bg-dark {
+    background-image: 
+        /* Vertical Lines */
+        repeating-linear-gradient(0deg, var(--circuit-color) 0, transparent 1px, transparent 40px),
+        /* Horizontal Lines */
+        repeating-linear-gradient(90deg, var(--circuit-color) 0, transparent 1px, transparent 40px);
     background-size: 40px 40px;
-    background-attachment: fixed; /* Fixes grid to viewport */
-    min-height: calc(100vh - 70px); /* Fill available space */
-    padding-top: 40px !important;
+    background-attachment: fixed;
+    background-color: var(--bg-dark) !important;
 }
 
-/* --- 3. Header/Navigation Styling --- */
-.custom-navbar { /* Target the class used in HTML */
-    /* ADJUSTED OPACITY: Changed 0.95 to 0.85 (85% opaque, 15% transparent) */
+.beware-container {
+    flex-grow: 1;
+    position: relative;
+    z-index: 2; 
+}
+
+/* Header and Footer (From beware.css) */
+.custom-navbar {
     background-color: rgba(0, 0, 0, 0.85) !important; 
     border-bottom: 2px solid var(--neon-blue);
     box-shadow: 0 0 20px rgba(0, 212, 255, 0.6); 
@@ -73,35 +79,57 @@ a:hover {
     z-index: 1030; 
 }
 
-.logo-text {
+.custom-navbar .logo-text {
     letter-spacing: 3px;
+    font-size: 1.8rem;
+    text-transform: uppercase;
     color: var(--neon-blue);
-    text-shadow: 0 0 10px var(--neon-blue);
+    text-shadow: 0 0 5px var(--neon-blue);
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
 }
 
-/* Back Button Styling (Reusing your "btn-cyan" look) */
+.bottom-panel {
+    background-color: var(--surface-dark) !important;
+    border-top: 2px solid var(--neon-blue);
+    position: relative;
+    z-index: 10;
+    margin-top: auto;
+}
+
+/* Back Button Styling (From beware.css) */
 .back-btn {
     border-radius: 25px;
     font-size: 0.9rem;
     padding: 8px 20px;
     font-weight: bold;
-    background-color: var(--color-monitor); /* btn-cyan */
-    border: none;
-    box-shadow: 0 0 10px var(--neon-blue);
+    color: var(--neon-blue) !important;
+    border-color: var(--neon-blue) !important;
+    background: transparent;
     transition: all 0.3s;
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
 .back-btn:hover {
-    background-color: var(--neon-blue);
+    background-color: var(--neon-blue) !important;
     color: var(--bg-dark) !important;
-    box-shadow: 0 0 15px var(--neon-green); /* Green glow on hover */
+    box-shadow: 0 0 15px var(--neon-green), inset 0 0 10px var(--neon-green);
+    border-color: var(--neon-green) !important;
     transform: translateY(-2px);
 }
 
-/* --- 4. Hero Section: Globe Graphic & Heading --- */
+.back-btn svg {
+    width: 20px;
+    height: 20px;
+    fill: currentColor;
+}
+
+/* 2. Hero Section: Globe Graphic & Heading (Unique to unhackable.html) */
+
 .unhackable-hero {
     position: relative;
-    padding: 30px 0;
+    padding: 5px 0;
     margin-bottom: 50px !important;
 }
 
@@ -111,14 +139,13 @@ a:hover {
     justify-content: center;
     align-items: center;
     position: relative;
-    /* This container holds the globe in the center */
 }
 
 .globe-placeholder {
     width: 280px;
     height: 280px;
     border-radius: 50%;
-    /* Create the glowing blue, digital globe effect */
+    /* Glowing Blue Effect */
     box-shadow: 0 0 40px var(--neon-blue), 0 0 15px rgba(0, 212, 255, 0.4) inset;
     background: radial-gradient(circle at center, rgba(0, 212, 255, 0.2) 0%, rgba(0, 212, 255, 0.05) 50%, rgba(0, 0, 0, 0) 100%);
     position: absolute;
@@ -138,17 +165,15 @@ a:hover {
     width: 100%;
     height: 100%;
     border-radius: 50%;
-    /* Lines to mimic the digital grid/latitude/longitude */
+    /* Digital Grid Lines */
     background-image: repeating-linear-gradient(0deg, var(--neon-blue), transparent 1px, transparent 50px),
-    	 	 	 	 repeating-linear-gradient(90deg, var(--neon-blue), transparent 1px, transparent 50px);
+                      repeating-linear-gradient(90deg, var(--neon-blue), transparent 1px, transparent 50px);
     background-size: 100% 50%;
     opacity: 0.3;
 }
 
-/* Heading and Loading Bar */
 #unhackable-heading {
     z-index: 10; 
-    color: white;
     letter-spacing: 5px;
     text-shadow: 0 0 12px var(--neon-blue);
     margin-bottom: 0.5rem;
@@ -170,50 +195,62 @@ a:hover {
     100% { width: 350px; background-color: var(--neon-blue); box-shadow: 0 0 10px var(--neon-blue); }
 }
 
-/* --- 5. Content Pillars (The Glowing Cards) --- */
-.pillar-box {
-    background-color: rgba(33, 37, 41, 0.9); /* Dark card with slight transparency */
-    border: 1px solid rgba(255, 255, 255, 0.1);
+/* 3. Content Pillars (Reusing Card Styles from beware.css) */
+
+.placeholder-box {
+    background-color: var(--surface-dark); /* Use the new surface dark variable */
+    border: none;
+    border-radius: 10px;
     transition: all 0.3s ease-in-out;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5); 
 }
 
-.pillar-box:hover {
-    transform: translateY(-5px); 
-    border-color: var(--neon-blue);
+.placeholder-box:hover {
+    transform: translateY(-4px); 
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.7);
 }
 
-.pillar-box h3 {
+.placeholder-box h3 {
     font-weight: 700;
+    text-transform: uppercase;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15); 
+    padding-bottom: 0.75rem;
+    margin-bottom: 1rem;
+    letter-spacing: 1.5px;
 }
 
-.pillar-box h3 svg {
-    color: white; /* Color controlled by the box border for a unified look */
-    filter: drop-shadow(0 0 5px white);
+.placeholder-box h3 svg {
+    filter: drop-shadow(0 0 5px currentColor); 
 }
 
-/* Applying Color Coding and Glows based on your variables */
+/* Danger Box (Zero Trust) - Uses neon-red */
+.box-danger { 
+    border-left: 5px solid var(--color-danger); 
+}
+.box-danger:hover { 
+    box-shadow: 0 0 20px rgba(255, 49, 49, 0.8), 0 0 5px var(--color-danger);
+}
 
-/* Authentication (Dark Blue) */
-.box-auth { border-left: 5px solid var(--color-auth); }
-.box-auth:hover { box-shadow: 0 0 15px rgba(0, 86, 179, 0.8); }
+/* Success Box (Encryption) - Uses neon-green */
+.box-success { 
+    border-left: 5px solid var(--color-success); 
+}
+.box-success:hover { 
+    box-shadow: 0 0 20px rgba(57, 255, 20, 0.8), 0 0 5px var(--color-success);
+}
 
-/* Encryption (Green) */
-.box-encryption { border-left: 5px solid var(--color-encryption); }
-.box-encryption:hover { box-shadow: 0 0 15px rgba(40, 167, 69, 0.8); }
-
-/* Zero Trust (Red) */
-.box-zt { border-left: 5px solid var(--color-zt); }
-.box-zt:hover { box-shadow: 0 0 15px rgba(217, 83, 79, 0.8); }
-
-/* Monitoring (Cyan) */
-.box-monitor { border-left: 5px solid var(--color-monitor); }
-.box-monitor:hover { box-shadow: 0 0 15px rgba(23, 162, 184, 0.8); }
-
+/* Info Box (Authentication/Monitoring) - Uses neon-blue */
+.box-info { 
+    border-left: 5px solid var(--color-info); 
+}
+.box-info:hover { 
+    box-shadow: 0 0 20px rgba(0, 212, 255, 0.8), 0 0 5px var(--color-info);
+}
 
 /* Defense List Styling */
 .defense-list li {
     padding: 8px 0;
-    border-bottom: 1px solid var(--circuit-color); /* Use the circuit color for subtle dividers */
+    border-bottom: 1px solid var(--circuit-color);
 }
 .defense-list li:last-child {
     border-bottom: none;
@@ -224,31 +261,11 @@ a:hover {
     margin-top: -2px;
 }
 .defense-list p strong {
-    color: white; /* Ensure key terms are visible */
+    color: white; 
 }
-.text-white-50 { /* Ensures the lead paragraphs are readable */
+.text-light {
+    color: var(--text-light) !important;
+}
+.text-white-50 {
     color: rgba(255, 255, 255, 0.7) !important;
-}
-
-/* --- 6. Footer Styling --- */
-footer {
-    background-color: rgba(0, 0, 0, 0.7);
-    border-top: 2px solid var(--circuit-color);
-    position: relative;
-    z-index: 10;
-}
-
-footer p {
-    margin-bottom: 0;
-}
-
-footer a {
-    color: var(--neon-blue) !important;
-    font-weight: bold;
-    text-shadow: 0 0 5px var(--neon-blue);
-}
-
-footer a:hover {
-    color: var(--neon-green) !important;
-    text-shadow: 0 0 5px var(--neon-green);
 }

@@ -1,256 +1,336 @@
-/* Custom CSS Variables */
+/* CSS Variables for a professional cybersecurity aesthetic */
 :root {
-    --bg-dark: #0A0F1A;
-    --surface-dark: #121A2B; /* Added for dropdown background */
-    --text-light: #E0E0E0;   /* Added for general visible text */
-    --neon-blue: #00D4FF;
-    --neon-green: #39FF14;
-    --neon-red: #FF3914;     /* Added for No Results */
-    --circuit-color: #004455;
-    --btn-red: #D9534F;
-    --btn-cyan: #17A2B8;
-    --btn-blue: #007BFF;
-    --btn-green: #28A745;
-    --btn-purple: #6F42C1;
-    --btn-light-teal: #20C997;
-    --btn-light-orange: #FF8F00;
-    --btn-dark-blue: #0056B3;
-    --btn-contact: #00A3CC;
+    /* Core Aesthetic Colors */
+    --color-background-deep: #00000a; /* Almost black */
+    --color-main-area-dark: #070e17; /* Deep Navy/Graphite */
+    --color-accent-neon: #00ffc8; /* Bright Cyan/Green Neon */
+    --color-accent-blue: #00aaff; /* Secondary Blue Neon */
+    --color-text-light: #ffffff;
+    --color-text-off: #a0a0a0;
+
+    /* Design Elements */
+    --font-heading: 'Orbitron', sans-serif;
+    --font-mono: 'Roboto Mono', monospace; /* Monospace for data/code look */
+    --border-radius-subtle: 3px; 
+    --line-weight: 2px;
 }
 
+/* Global Body and Text Styles */
 body {
-    background-color: var(--bg-dark);
-    color: white;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    overflow: hidden; 
-    height: 100vh;
+    background-color: var(--color-background-deep);
+    color: var(--color-text-light);
+    font-family: var(--font-mono);
+    min-height: 100vh;
+    overflow-x: hidden;
+    margin: 0;
 }
 
-/* --- 1. Main Layout & Background --- */
+/* -------------------- Navigation Bar -------------------- */
 
-.main-content {
-    /* Circuit Board Background Effect */
-    background: radial-gradient(circle at center, rgba(0, 50, 60, 0.1) 0%, rgba(0, 0, 0, 1) 100%);
-    background-image: repeating-linear-gradient(0deg, var(--circuit-color) 0, transparent 1px),
-                      repeating-linear-gradient(90deg, var(--circuit-color) 0, transparent 1px);
-    background-size: 50px 50px;
-    height: calc(100vh - 70px); 
-    padding-top: 0 !important;
-    padding-bottom: 0 !important;
-}
-
-/* --- 2. Header/Navigation Styling --- */
-
-.custom-navbar {
-    background-color: rgba(0, 0, 0, 0.5); 
-    border-bottom: 1px solid var(--neon-blue);
-    padding: 0.5rem 2rem;
-}
-
-.logo-text {
-    letter-spacing: 2px;
-    color: var(--neon-blue);
-    text-shadow: 0 0 5px var(--neon-blue);
-}
-
-/* --- 3. Search Bar Styling (Modified for Dropdown) --- */
-
-.search-form {
-    width: 300px;
-    position: relative; /* CRITICAL: For dropdown positioning */
-}
-
-.search-input {
-    background-color: rgba(0, 0, 0, 0.5);
-    border: 1px solid var(--neon-blue);
-    color: white;
-    box-shadow: 0 0 5px var(--neon-blue);
-    padding-right: 40px; 
-    transition: all 0.3s;
-}
-
-.search-input::placeholder {
-    color: rgba(255, 255, 255, 0.5);
-}
-
-.search-input:focus {
-    background-color: rgba(0, 0, 0, 0.7);
-    border-color: var(--neon-green);
-    box-shadow: 0 0 10px var(--neon-green);
-    color: white;
-}
-
-.search-button {
-    position: absolute;
-    right: 5px;
-    top: 50%;
-    transform: translateY(-50%);
-    background: none;
-    border: none;
+.nav-custom-bg {
+    background-color: var(--color-main-area-dark);
+    border-bottom: var(--line-weight) solid var(--color-accent-neon); /* Sharp neon line divider */
+    box-shadow: 0 0 15px rgba(0, 255, 200, 0.2);
     padding: 0;
 }
 
-.search-button svg path {
-    fill: var(--neon-blue);
-    transition: fill 0.3s;
+.custom-navbar-container {
+    padding: 10px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
-.search-button:hover svg path {
-    fill: var(--neon-green);
+.logo-text {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 1.6rem;
+    letter-spacing: 3px;
+    color: var(--color-accent-neon);
+    text-shadow: 0 0 5px rgba(0, 255, 200, 0.6);
 }
 
-/* --- 4. Search Results Dropdown Styling (NEW) --- */
+.nav-links-container {
+    flex-grow: 1;
+    display: flex;
+    gap: 15px;
+    margin-left: 50px;
+}
+
+/* Geometric Navigation Buttons */
+.btn-dark-blue-ss {
+    background: #111a28; /* Dark button base */
+    color: var(--color-text-off) !important;
+    text-decoration: none;
+    padding: 6px 14px;
+    border: 1px solid var(--color-accent-neon);
+    border-radius: 0;
+    clip-path: polygon(10% 0%, 100% 0%, 90% 100%, 0% 100%); /* Slanted edges for aesthetic */
+    font-size: 0.85rem;
+    transition: background-color 0.3s, color 0.3s, box-shadow 0.3s;
+}
+.btn-dark-blue-ss:hover {
+    background-color: var(--color-accent-neon);
+    color: var(--color-background-deep) !important;
+    box-shadow: 0 0 10px var(--color-accent-neon);
+}
+
+/* Search Area */
+.search-form {
+    position: relative; 
+    display: flex;
+    align-items: center;
+    background-color: #ffffff;
+    border: 1px solid var(--color-accent-blue);
+    border-radius: var(--border-radius-subtle);
+    box-shadow: 0 0 5px rgba(0, 170, 255, 0.5);
+}
+
+.custom-search-input {
+    background-color: transparent; 
+    color: var(--color-background-deep);
+    border: none;
+    height: 36px;
+    width: 240px;
+    padding-left: 10px;
+    font-family: var(--font-mono);
+}
+.custom-search-input::placeholder {
+    color: #666;
+}
+
+.custom-search-btn {
+    background-color: transparent;
+    border: none;
+    color: var(--color-main-area-dark); 
+    padding: 0 10px;
+    height: 36px;
+}
+
+.search-icon {
+    color: var(--color-accent-blue);
+    font-size: 1rem;
+}
+
+/* Search Results Dropdown */
 .search-results-dropdown {
     position: absolute;
     top: 100%; 
-    left: 0;
-    z-index: 1000; 
+    right: 0;
     width: 100%; 
-    margin-top: 5px;
-    background-color: var(--surface-dark); 
-    border: 1px solid var(--neon-blue); 
-    border-radius: 5px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.7);
-    overflow: hidden;
+    background-color: var(--color-main-area-dark);
+    border: 1px solid var(--color-accent-neon);
+    z-index: 1000; 
+    box-shadow: 0 4px 15px rgba(0, 255, 200, 0.4);
+    border-radius: 0 0 var(--border-radius-subtle) var(--border-radius-subtle); 
+    border-top: none;
 }
 
-.search-results-dropdown .dropdown-item {
+.dropdown-item {
     padding: 8px 15px;
-    display: block;
-    color: var(--text-light); 
+    color: var(--color-text-off);
+    border-bottom: 1px dashed rgba(0, 255, 200, 0.1);
+    font-size: 0.9rem;
+}
+
+.dropdown-item:hover {
+    background-color: #1a2a3e;
+    color: var(--color-accent-neon);
+}
+
+.dropdown-item.no-results {
+    color: #ff5555;
+    font-weight: 700;
+}
+
+
+/* -------------------- Main Hero Section -------------------- */
+
+.hero-section {
+    height: calc(100vh - 60px); 
+    padding: 0; 
+    background-color: var(--color-background-deep);
+    /* Subtle gradient to transition from dark to slightly darker */
+    background-image: linear-gradient(to right, #00000a 50%, #030613 100%);
+}
+
+.row.h-100 {
+    margin: 0;
+    height: 100%;
+}
+
+/* Left Column: Cybernews */
+.cybernews-column {
+    background-color: var(--color-main-area-dark);
+    /* Aesthetic diagonal border */
+    border-right: 2px solid var(--color-accent-blue);
+    padding: 40px 30px;
+    height: 100%;
+}
+
+.cybernews-title {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 3.5rem; 
+    letter-spacing: 4px;
+    margin-bottom: 0; 
+    color: var(--color-accent-neon);
+    text-shadow: 0 0 12px rgba(0, 255, 200, 0.7);
+    line-height: 1;
+}
+
+.meta-row {
+    margin-top: 5px; 
+    margin-bottom: 25px; 
+}
+
+.featured-news-date-meta, .featured-news-today-text {
+    color: var(--color-text-off);
+    font-size: 0.9rem;
+    margin: 0; 
+    text-transform: uppercase;
+}
+
+.news-card {
+    background-color: #111a28;
+    border: 1px solid rgba(0, 170, 255, 0.3);
+    height: calc(100% - 110px); 
+    display: flex;
+    flex-direction: column;
+    position: relative; 
+    box-shadow: 0 0 15px rgba(0, 170, 255, 0.3);
+}
+
+.featured-news-link-overlay {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
     text-decoration: none;
-    background-color: transparent;
-    transition: background-color 0.2s, color 0.2s;
-    border-bottom: 1px solid rgba(0, 212, 255, 0.1);
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    color: inherit;
+    transition: all 0.3s ease;
 }
 
-.search-results-dropdown .dropdown-item:last-child {
-    border-bottom: none;
+.featured-news-link-overlay:hover {
+    box-shadow: 0 0 15px rgba(0, 255, 200, 0.5); 
 }
 
-.search-results-dropdown .dropdown-item:hover {
-    background-color: var(--neon-blue);
-    color: var(--bg-dark); 
-    font-weight: bold;
-}
-
-.search-results-dropdown .no-results {
-    color: var(--neon-red); 
-    text-align: center;
-    cursor: default;
-    padding: 10px;
-    font-style: italic;
-    font-weight: bold;
-}
-
-/* --- 5. Button Panel Styling --- */
-
-.button-panel {
-    border-right: 1px solid var(--circuit-color);
-    padding-right: 2rem !important;
-}
-
-.custom-btn {
-    color: white;
-    border: none;
-    text-align: left;
-    padding: 1rem 1.5rem;
-    font-size: 1.1rem;
-    font-weight: bold;
-    transition: all 0.3s ease-in-out;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
-    border-radius: 0.5rem;
-}
-
-.custom-btn:hover {
-    transform: translateY(-2px);
-    opacity: 0.9;
-    color: white;
-}
-
-/* Button Colors */
-.btn-red { background-color: var(--btn-red); box-shadow: 0 0 10px rgba(217, 83, 79, 0.6); }
-.btn-cyan { background-color: var(--btn-cyan); box-shadow: 0 0 10px rgba(23, 162, 184, 0.6); }
-.btn-green { background-color: var(--btn-green); box-shadow: 0 0 10px rgba(40, 167, 69, 0.6); }
-.btn-purple { background-color: var(--btn-purple); box-shadow: 0 0 10px rgba(111, 66, 193, 0.6); }
-.btn-light-teal { background-color: var(--btn-light-teal); box-shadow: 0 0 10px rgba(32, 201, 151, 0.6); }
-.btn-light-orange { background-color: var(--btn-light-orange); box-shadow: 0 0 10px rgba(255, 143, 0, 0.6); }
-.btn-dark-blue { background-color: var(--btn-dark-blue); box-shadow: 0 0 10px rgba(0, 86, 179, 0.6); }
-.btn-contact { background-color: var(--btn-contact); box-shadow: 0 0 15px var(--neon-blue); } 
-
-/* --- 6. Globe Graphic and Heading --- */
-
-.globe-panel {
+.map-graphic {
+    background-color: #030613;
+    flex-grow: 1;
     position: relative;
+    overflow: hidden; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.globe-placeholder {
-    width: 60vh;
-    height: 60vh;
-    border-radius: 50%;
-    /* Create the glowing blue, digital globe effect */
-    box-shadow: 0 0 50px var(--neon-blue), 0 0 20px rgba(0, 212, 255, 0.5) inset;
-    background: radial-gradient(circle at center, rgba(0, 212, 255, 0.2) 0%, rgba(0, 212, 255, 0.05) 50%, rgba(0, 0, 0, 0) 100%);
-    position: absolute;
-    top: 50%;
-    left: 60%;
-    transform: translate(-50%, -50%);
-    animation: pulse 5s infinite alternate;
-}
-
-@keyframes pulse {
-    0% { transform: translate(-50%, -50%) scale(1); opacity: 0.8; }
-    100% { transform: translate(-50%, -50%) scale(1.05); opacity: 1; }
-}
-
-.globe-center {
+/* Image Styling - Professional Filter */
+.dynamic-image {
     width: 100%;
     height: 100%;
+    object-fit: cover; 
+    /* Apply a duotone/dark high-tech filter */
+    filter: brightness(0.7) contrast(1.2) grayscale(30%) sepia(20%) hue-rotate(180deg);
+    transition: filter 0.3s;
+}
+
+/* Fallback/Loading Graphic - Monospace data aesthetic */
+.dynamic-graphic-fallback {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: #0d1230; 
+    background-image: 
+        /* Fine grid background */
+        url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(0, 255, 200, 0.1)" stroke-width="0.3"/></pattern></defs><rect width="100%" height="100%" fill="url(%23grid)" /></svg>');
+    background-size: cover;
+    display: flex; 
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.loading-animation {
+    position: relative;
+    width: 50px;
+    height: 50px;
+    border: 4px solid rgba(0, 255, 200, 0.3);
+    border-top-color: var(--color-accent-neon);
     border-radius: 50%;
-    /* Lines to mimic the digital grid/latitude/longitude */
-    background-image: repeating-linear-gradient(0deg, var(--neon-blue), transparent 1px, transparent 15vh),
-                      repeating-linear-gradient(90deg, var(--neon-blue), transparent 1px, transparent 15vh);
-    background-size: 100% 50%;
-    opacity: 0.3;
+    animation: spin 1s linear infinite;
+    z-index: 10;
 }
 
-.globe-panel h1 {
-    z-index: 10; 
-    color: white;
-    letter-spacing: 5px;
-    text-shadow: 0 0 10px var(--neon-blue);
-    margin-bottom: 0.5rem;
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
 }
 
-.loading-bar-placeholder {
-    width: 300px;
-    height: 5px;
-    background-color: var(--neon-blue);
-    box-shadow: 0 0 10px var(--neon-blue);
-    animation: load-bar 3s infinite;
+.loading-text {
+    color: var(--color-accent-neon);
+    font-family: var(--font-mono);
+    margin-top: 15px;
+    letter-spacing: 2px;
 }
 
-@keyframes load-bar {
-    0% { width: 100px; }
-    50% { width: 350px; background-color: var(--neon-green); box-shadow: 0 0 10px var(--neon-green); }
-    100% { width: 300px; background-color: var(--neon-blue); box-shadow: 0 0 10px var(--neon-blue); }
+.description-box {
+    background-color: #0c1521; /* Slightly darker than card base */
+    padding: 18px 25px; 
+    font-size: 1.05rem;
+    color: var(--color-text-light); 
+    font-weight: 700;
+    border-top: 1px solid rgba(0, 170, 255, 0.3);
 }
 
-/* --- 7. Footer Styling --- */
-
-footer {
-    background-color: rgba(0, 0, 0, 0.5);
-    border-top: 1px solid var(--circuit-color);
+/* Right Column: Digital Realm */
+.digital-realm-column {
+    background: var(--color-background-deep);
+    padding: 60px 80px 30px 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
 }
 
-.social-icons a svg {
-    transition: transform 0.3s, fill 0.3s;
+.digital-realm-title {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 3.8rem;
+    line-height: 1.1;
+    margin-bottom: 25px;
+    color: var(--color-accent-blue);
+    text-shadow: 0 0 8px rgba(0, 170, 255, 0.6);
+    
+    /* Geometric line overlay aesthetic */
+    border-bottom: 3px double var(--color-accent-neon);
+    padding-bottom: 10px;
 }
 
-.social-icons a:hover svg {
-    transform: scale(1.1);
-    filter: drop-shadow(0 0 5px var(--neon-green));
+.intro-text {
+    font-size: 1.1rem;
+    color: var(--color-text-off);
+    margin-bottom: 50px;
+    max-width: 90%;
+}
+
+/* Action Links Styling */
+.button-group-custom {
+    gap: 30px; 
+}
+.custom-action-link {
+    color: var(--color-accent-neon); 
+    font-size: 1.1rem;
+    font-weight: 700;
+    transition: color 0.2s, text-shadow 0.2s;
+    border-bottom: 1px dashed var(--color-accent-neon);
+    padding-bottom: 4px;
+    text-transform: uppercase;
+}
+
+.custom-action-link:hover {
+    color: var(--color-accent-blue);
+    text-shadow: 0 0 5px var(--color-accent-blue);
+    border-bottom-color: var(--color-accent-blue);
 }

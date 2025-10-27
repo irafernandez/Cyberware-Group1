@@ -2,12 +2,12 @@
 :root {
     /* Rich, Professional Dark Colors */
     --bg-dark: #0A0F1A;
-    --text-light: #E0E0E0;   
+    --text-light: #E0E0E0;  
     --surface-dark: #121A2C; 
-    --neon-blue: #00D4FF;   /* Info/Primary */
-    --neon-green: #39FF14;  /* Hover/Success */
-    --neon-red: #FF3131;    /* Danger/Warning */
-    --circuit-color: #004455; /* Subtle Grid Color */
+    --neon-blue: #00D4FF; 
+    --neon-green: #39FF14;
+    --neon-red: #FF3131;
+    --circuit-color: #004455;
     
     --font-primary: 'Inter', sans-serif;
 }
@@ -120,16 +120,43 @@ a:hover {
 .article-card {
     background-color: var(--surface-dark);
     border: 1px solid rgba(0, 212, 255, 0.2);
-    border-left: 5px solid var(--neon-red); /* Highlight as threat/alert */
+    border-left: 5px solid var(--neon-red);
     border-radius: 10px;
     transition: all 0.3s;
-    height: 100%; /* Important for equal height in grid */
+    height: 100%; 
+    display: flex;
+    flex-direction: column;
 }
 
 .article-card:hover {
     box-shadow: 0 0 15px rgba(255, 49, 49, 0.6);
     transform: translateY(-3px);
-    border-left-color: var(--neon-green); /* Change border on hover */
+    border-left-color: var(--neon-green);
+}
+
+/* New: Image Container and Styling */
+.article-img-container {
+    width: 100%;
+    height: 180px;
+    overflow: hidden;
+    border-radius: 8px 8px 0 0;
+    margin-bottom: 15px;
+}
+
+.article-img-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* Apply a duotone/dark high-tech filter for aesthetic consistency */
+    filter: brightness(0.7) contrast(1.2) grayscale(30%) sepia(20%) hue-rotate(180deg);
+    transition: filter 0.3s;
+}
+
+.article-card-body {
+    padding: 0 20px 20px 20px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
 }
 
 .article-card-title {
@@ -150,6 +177,9 @@ a:hover {
     font-weight: bold;
     text-transform: uppercase;
     letter-spacing: 1px;
+    margin-top: auto; /* Push the link to the bottom */
+    display: inline-block;
+    padding-top: 10px;
 }
 .read-more-link:hover {
     color: var(--neon-blue);
@@ -158,6 +188,7 @@ a:hover {
 .article-meta {
     font-size: 0.8rem;
     opacity: 0.7;
+    margin-bottom: 5px;
 }
 
 /* Spinner Styling */

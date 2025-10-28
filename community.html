@@ -39,7 +39,7 @@
                 </a>
                 
                 <h2 id="community-heading" class="display-3 fw-bolder mt-4 text-white">The Fortress Forum</h2>
-                <p class="lead text-light">Post your security questions, breaches, or tips **anonymously**. We are all Guardians here.</p>
+                <p class="lead text-light">Post your security questions, breaches, or tips anonymously. We are all Guardians here.</p>
             </section>
             
             <div class="row g-5">
@@ -55,8 +55,20 @@
                             </div>
                             
                             <div class="mb-3">
-                                <label for="post-content" class="form-label fw-bold">Details</label>
+                                <label for="post-content" class="form-label fw-bold d-flex justify-content-between">
+                                    <span>Details (Must be friendly!)</span>
+                                    <span id="char-counter" class="text-white-50 small">0 / 1000</span>
+                                </label>
                                 <textarea class="form-control" id="post-content" rows="5" required placeholder="Describe your issue or share your tip here..."></textarea>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="post-category" class="form-label fw-bold">Post Category</label>
+                                <select class="form-select form-control" id="post-category" required>
+                                    <option value="question" selected>General Query</option>
+                                    <option value="tip">Security Tip</option>
+                                    <option value="danger">Breach Alert</option>
+                                </select>
                             </div>
                             
                             <div class="form-check mb-4">
@@ -78,37 +90,7 @@
                         <h3 class="h4 fw-bold mb-4 custom-neon-blue-text">Community Feed (Live Data)</h3>
                         
                         <div id="community-feed-list" class="d-grid gap-4">
-                            <div class="card post-item post-danger p-3 shadow">
-                                <span class="post-tag badge bg-danger text-uppercase fw-bold">BREACH ALERT</span>
-                                <h4 class="h5 fw-bold mt-2">Major Ransomware Attack on a Small Business?</h4>
-                                <p class="post-text mb-2">My friend's company was hit; all files encrypted. They didn't have backups. Is there any way to fight this without paying the ransom?</p>
-                                <div class="d-flex justify-content-between align-items-center post-meta">
-                                    <span class="text-white-50">Posted by: <strong class="text-info-neon">Guardian#3087</strong></span>
-                                    <span class="text-white-50">3 hours ago</span>
-                                </div>
                             </div>
-                            
-                            <div class="card post-item post-tip p-3 shadow">
-                                <span class="post-tag badge bg-success text-uppercase fw-bold">SECURITY TIP</span>
-                                <h4 class="h5 fw-bold mt-2">Don't Forget to Check Your Router Firmware!</h4>
-                                <p class="post-text mb-2">Just updated my router; found out I was running five versions behind. Router security is often the weakest link in a home network. Patch everything!</p>
-                                <div class="d-flex justify-content-between align-items-center post-meta">
-                                    <span class="text-white-50">Posted by: <strong class="text-info-neon">Guardian#5193</strong></span>
-                                    <span class="text-white-50">1 day ago</span>
-                                </div>
-                            </div>
-
-                            <div class="card post-item post-question p-3 shadow">
-                                <span class="post-tag badge bg-info text-uppercase fw-bold">GENERAL QUERY</span>
-                                <h4 class="h5 fw-bold mt-2">Are hardware security keys worth the investment?</h4>
-                                <p class="post-text mb-2">I use an authenticator app, but keep seeing YubiKeys recommended. For a normal user, is the extra cost justified for better protection?</p>
-                                <div class="d-flex justify-content-between align-items-center post-meta">
-                                    <span class="text-white-50">Posted by: <strong class="text-info-neon">Guardian#1402</strong></span>
-                                    <span class="text-white-50">2 days ago</span>
-                                </div>
-                            </div>
-                            
-                        </div>
                     </section>
                 </div>
             </div>
@@ -120,6 +102,41 @@
         <p class="mb-0 text-white-50">A project by Cyberware | <a href="contact.html" class="custom-neon-blue-text-link">Contact Support</a></p>
     </footer>
 
+    <div class="modal fade" id="alertModal" tabindex="-1" aria-labelledby="alertModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content custom-modal-content">
+                <div class="modal-header border-danger">
+                    <h5 class="modal-title text-danger" id="alertModalLabel">Submission Error</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p id="alert-message" class="text-light fw-bold"></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-info" data-bs-dismiss="modal">OK</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="deletePostModal" tabindex="-1" aria-labelledby="deletePostModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content custom-modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title text-danger" id="deletePostModalLabel">Confirm Deletion</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p class="mb-3">Are you sure you want to permanently delete your post? This action cannot be undone.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-info" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-danger" id="final-delete-btn">Delete Post</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
     <div class="modal fade" id="confirmPostModal" tabindex="-1" aria-labelledby="confirmPostModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content custom-modal-content">
@@ -135,12 +152,15 @@
                     
                     <h6 class="text-success-neon mt-3">Details:</h6>
                     <p id="confirm-content" class="text-light"></p>
+
+                    <h6 class="text-success-neon mt-3">Category:</h6>
+                    <p id="confirm-category" class="text-light"></p>
                     
                     <div class="alert alert-warning mt-4 fw-bold" role="alert">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-shield-lock-fill me-2" viewBox="0 0 16 16">
-                          <path fill-rule="evenodd" d="M8 0c-.69 0-1.843.914-2.678 2.432-.395.733-.57 1.745-.88 2.21-1.353 2.148-1.588 5.485-.25 7.024L8 16l3.528-5.333c1.338-1.539 1.103-4.876-.25-7.024-.31-.465-.485-1.477-.88-2.21C9.843.914 8.69 0 8 0z"/>
+                            <path fill-rule="evenodd" d="M8 0c-.69 0-1.843.914-2.678 2.432-.395.733-.57 1.745-.88 2.21-1.353 2.148-1.588 5.485-.25 7.024L8 16l3.528-5.333c1.338-1.539 1.103-4.876-.25-7.024-.31-.465-.485-1.477-.88-2.21C9.843.914 8.69 0 8 0z"/>
                         </svg>
-                        Your post will be tagged as **Guardian #[Random Number]**.
+                        Your post is only deletable by you in this browser session.
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -150,6 +170,7 @@
             </div>
         </div>
     </div>
+    
     <script 
         src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" 
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" 

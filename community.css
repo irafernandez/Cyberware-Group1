@@ -4,9 +4,9 @@
     --bg-dark: #0A0F1A;
     --text-light: #E0E0E0;   /* Defined light text color for visibility */
     --surface-dark: #121A2C; 
-    --neon-blue: #00D4FF;   /* Info/Primary */
-    --neon-green: #39FF14;  /* Hover/Success */
-    --neon-red: #FF3131;    /* Danger/Warning */
+    --neon-blue: #00D4FF;    /* Info/Primary */
+    --neon-green: #39FF14;   /* Hover/Success */
+    --neon-red: #FF3131;     /* Danger/Warning */
     --circuit-color: #004455; /* Subtle Grid Color */
     
     --font-primary: 'Inter', sans-serif;
@@ -134,6 +134,16 @@ a:hover {
     height: fit-content;
 }
 
+/* Styling for delete button added in JS */
+.delete-post-btn {
+    opacity: 0.5;
+    transition: opacity 0.2s, transform 0.2s;
+}
+.delete-post-btn:hover {
+    opacity: 1;
+    transform: scale(1.1);
+}
+
 .submission-panel h3 {
     color: var(--neon-blue);
     text-shadow: 0 0 5px var(--neon-blue);
@@ -143,18 +153,35 @@ a:hover {
     color: var(--text-light); /* Ensure form labels are visible */
 }
 
-.form-control {
+/* Base style for all form controls (input, textarea, select) */
+.form-control,
+.form-select { 
     background-color: rgba(255, 255, 255, 0.05);
     border: 1px solid rgba(0, 212, 255, 0.3);
-    color: var(--text-light); /* Make input text visible */
+    color: var(--text-light); /* Make the selected/typed text visible */
     transition: all 0.3s;
+}
+
+/* --- DROPDOWN VISIBILITY FIX (Fixes white text on white background) --- */
+.form-select option {
+    /* Makes the dropdown options readable: Dark text on a light background */
+    background-color: white !important; 
+    color: var(--bg-dark) !important;   
+}
+
+/* Character counter color when over the limit */
+.char-error {
+    color: var(--neon-red) !important;
+    font-weight: bold;
 }
 
 .form-control::placeholder {
     color: rgba(255, 255, 255, 0.5); /* Make placeholder text lighter */
 }
 
-.form-control:focus {
+/* Focus state for inputs and select */
+.form-control:focus,
+.form-select:focus { 
     background-color: rgba(255, 255, 255, 0.1);
     border-color: var(--neon-green);
     box-shadow: 0 0 8px rgba(57, 255, 20, 0.6);

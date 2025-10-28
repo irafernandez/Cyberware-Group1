@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-    const CYBER_RSS_URL = 'https://www.wired.com/feed/category/security/latest/rss';
+    const CYBER_RSS_URL = 'https://feeds.feedburner.com/TheHackersNews?format=xml';
     const RSS_TO_JSON_API = 'https://api.rss2json.com/v1/api.json?rss_url=';
 
     const featuredDateMetaEl = document.getElementById('featured-news-date-meta');
@@ -35,7 +35,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // -------------------------------------------------------------------
 
     function fetchFeaturedNews() {
-        // Use the new Wired Security feed
+        
         const apiURL = RSS_TO_JSON_API + encodeURIComponent(CYBER_RSS_URL);
 
         fetch(apiURL)
@@ -68,7 +68,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     /**
      * Extracts the image URL from the RSS feed item structure.
-     * Wired uses 'media:content' which RSS2JSON often maps to 'enclosure' or provides a 'thumbnail'.
+     
      * @param {Object} item - The news item.
      * @returns {string|null} The image URL or null.
      */

@@ -1,8 +1,8 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // UPDATED RSS Feed URL: Wired Security is a good source for tech/cyber-focused news
-    const CYBER_RSS_URL = 'https://www.wired.com/feed/category/security/latest/rss'; 
+   
+    const CYBER_RSS_URL = 'https://feeds.feedburner.com/TheHackersNews?format=xml'; 
     
-    // Public RSS-to-JSON proxy to bypass CORS restrictions
+   
     const RSS_TO_JSON_API = 'https://api.rss2json.com/v1/api.json?rss_url=';
 
     const feedContainer = document.getElementById('news-feed-container');
@@ -30,11 +30,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (data.status === 'ok' && data.items && data.items.length > 0) {
                     // Update the hero text to reflect the source
                     if (heroParagraph) {
-                        heroParagraph.innerHTML = 'Powered by <a href="https://www.wired.com/category/security/" target="_blank" class="custom-neon-blue-text-link">WIRED Security</a> | Real-time Cybersecurity Intelligence.';
+                        heroParagraph.innerHTML = 'Powered by <a href="https://thehackernews.com/" target="_blank" class="custom-neon-blue-text-link">The Hacker News</a> | Real-time Cybersecurity Intelligence.';
                     }
                     renderArticles(data.items);
                 } else {
-                    displayError('The WIRED Security feed is currently unavailable or empty. Check the console for data status.');
+                    displayError('The hacker news feed is currently unavailable or empty. Check the console for data status.');
                 }
             })
             .catch(error => {
@@ -79,7 +79,7 @@ document.addEventListener('DOMContentLoaded', () => {
         articlesToRender.forEach(item => {
             const imageUrl = getNewsImageUrl(item);
             
-            // WIRED feeds usually have a description in item.content
+            
             const rawDescription = item.content ? stripHtml(item.content) : (item.description ? stripHtml(item.description) : 'Click to view the full article for details.');
             const description = rawDescription.substring(0, 200).trim() + (rawDescription.length > 200 ? '...' : '');
 

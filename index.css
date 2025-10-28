@@ -3,9 +3,9 @@
     /* Core Aesthetic Colors */
     --color-background-deep: #00000a; /* Almost black */
     --color-main-area-dark: #070e17; /* Deep Navy/Graphite */
-    --color-accent-neon: #00ffc8; /* Bright Cyan/Green Neon */
-    --color-accent-blue: #00aaff; /* Secondary Blue Neon */
-    --color-text-light: #ffffff;
+    --color-accent-neon: #00aaff; /* Bright Cyan/Green Neon */
+    --color-accent-blue: #00ffc8; /* Secondary Blue Neon */
+    --color-text-light: #ffffff; 
     --color-text-off: #a0a0a0;
 
     /* Design Elements */
@@ -179,6 +179,15 @@ body {
     line-height: 1;
 }
 
+.cybernews-title-link {
+    transition: all 0.3s ease-in-out; 
+}
+
+.cybernews-title-link:hover .cybernews-title {
+    color: var(--color-accent-blue);
+    text-shadow: 0 0 15px rgba(0, 170, 255, 0.8), 0 0 5px rgba(0, 170, 255, 1);
+}
+
 .meta-row {
     margin-top: 5px; 
     margin-bottom: 25px; 
@@ -286,7 +295,20 @@ body {
 
 /* Right Column: Digital Realm */
 .digital-realm-column {
-    background: var(--color-background-deep);
+    
+    background-image: 
+        
+        url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 10 10"><rect x="0" y="0" width="10" height="10" fill="transparent"/><path d="M 0 0 L 10 0 M 0 0 L 0 10" fill="none" stroke="rgba(0, 255, 200, 0.25)" stroke-width="0.3"/></svg>'),
+        
+        radial-gradient(circle at 100% 50%, 
+            var(--color-background-deep) 0%, 
+            #0d1f36 70%, 
+            var(--color-background-deep) 100%
+        );
+
+    background-size: 10px 10px, cover; 
+    background-repeat: repeat, no-repeat;
+    
     padding: 60px 80px 30px 50px;
     display: flex;
     flex-direction: column;

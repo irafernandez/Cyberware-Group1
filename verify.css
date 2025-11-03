@@ -2,11 +2,11 @@
 :root {
     /* Rich, Professional Dark Colors */
     --bg-dark: #0A0F1A;
-    --text-light: #E0E0E0;   
+    --text-light: #E0E0E0;    
     --surface-dark: #121A2C; 
-    --neon-blue: #00D4FF;   /* Info/Primary */
+    --neon-blue: #00D4FF;    /* Info/Primary */
     --neon-green: #39FF14;  /* Success */
-    --neon-red: #FF3131;    /* Danger */
+    --neon-red: #FF3131;     /* Danger */
     --circuit-color: #004455; /* Subtle Grid Color */
     
     --font-primary: 'Inter', sans-serif;
@@ -71,7 +71,7 @@ a:hover {
     background-color: var(--bg-dark) !important;
 }
 
-/* --- 3. Fixed Header and Back Button (No changes needed here) --- */
+/* --- 3. Fixed Header and Back Button --- */
 .custom-navbar {
     background-color: rgba(0, 0, 0, 0.85) !important; 
     border-bottom: 2px solid var(--neon-blue);
@@ -108,7 +108,7 @@ a:hover {
     fill: currentColor;
 }
 
-/* --- 4. Verification Specific Styles (FIXES APPLIED HERE) --- */
+/* --- 4. Verification Specific Styles --- */
 
 #verify-heading {
     letter-spacing: 5px;
@@ -131,12 +131,12 @@ a:hover {
 .form-control {
     background-color: rgba(255, 255, 255, 0.05);
     border: 1px solid rgba(0, 212, 255, 0.3);
-    color: white !important; /* CRITICAL FIX: Ensure user input text is white */
+    color: white !important; 
     transition: all 0.3s;
 }
 
 .form-control::placeholder {
-    color: rgba(255, 255, 255, 0.5) !important; /* Ensure placeholder text is visible */
+    color: rgba(255, 255, 255, 0.5) !important; 
 }
 
 .form-control:focus {
@@ -151,21 +151,64 @@ a:hover {
     width: 100%;
 }
 
+/* ITI flag assets */
 .iti__flag {
     background-image: url("https://cdn.jsdelivr.net/npm/intl-tel-input@18.3.3/build/img/flags.png");
 }
-
 @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
     .iti__flag {
         background-image: url("https://cdn.jsdelivr.net/npm/intl-tel-input@18.3.3/build/img/flags@2x.png");
     }
 }
 
+/* Default Country List Styling (Applies to desktop/large screen) */
 .iti__country-list {
     background-color: var(--surface-dark);
     border: 1px solid var(--neon-blue);
     color: var(--text-light);
+    max-height: 250px; 
+    overflow-y: auto;
 }
+
+/* FIX: AGGRESSIVE MOBILE POSITION OVERRIDE */
+@media (max-width: 767px) {
+    /* 1. Ensure the top-level ITI wrapper is positioned correctly */
+    .iti {
+        position: relative !important; 
+    }
+
+    /* 2. Remove the fixed/full-screen positioning from the library's temporary container */
+    /* This element often sits in the <body> and forces the dropdown to the top. */
+    .iti--container {
+        position: static !important;
+        top: auto !important;
+        left: auto !important;
+        right: auto !important;
+        bottom: auto !important;
+        width: auto !important;
+        height: auto !important;
+        z-index: 999; 
+        
+        /* Stop it from applying a weird background overlay */
+        background: transparent !important; 
+    }
+    
+    /* 3. Ensure the country list drops down under the input */
+    .iti__country-list {
+        position: absolute !important;
+        top: 100% !important; /* Force below input */
+        left: 0 !important;
+        right: auto !important;
+        
+        /* Adjust appearance */
+        width: 300px; 
+        max-width: 90vw; 
+        margin-top: 5px; 
+        z-index: 1000;
+    }
+}
+/* END AGGRESSIVE MOBILE FIX */
+
 
 .iti__country:hover {
     background-color: rgba(0, 212, 255, 0.2);
@@ -218,13 +261,13 @@ a:hover {
 .result-value {
     font-size: 1.2rem;
     margin-top: 0;
-    color: var(--text-light) !important; /* Ensure result text is always light */
+    color: var(--text-light) !important; 
 }
 
 /* FIX: Styling for the Bootstrap Alert in JS error messages */
 .alert-danger {
-    background-color: #330000 !important; /* Dark red background */
-    color: var(--text-light) !important; /* Ensure body text in alert is light */
+    background-color: #330000 !important; 
+    color: var(--text-light) !important; 
     border-color: var(--neon-red) !important;
 }
 .alert-heading {
